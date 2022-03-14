@@ -1,0 +1,18 @@
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  (mapClick)="handleMapClick($event)"
+>
+  <agm-marker
+    *ngFor="let marker of markers; let i = index"
+    (markerClick)="handleMarkerClick(marker, i)"
+    [latitude]="marker.lat"
+    [longitude]="marker.lng"
+    [markerDraggable]="marker.draggable"
+    (dragEnd)="markerDragEnd(marker, $event)"
+  >
+    <agm-info-window><strong>{{ marker.name }}</strong></agm-info-window>
+  </agm-marker>
+</agm-map>
